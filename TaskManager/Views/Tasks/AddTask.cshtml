@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Add task";
+    Layout = "_Layout";
+}
+
+<div class="add-task-container">
+    <h1 class="mb-5">Add Task</h1>
+    <form class="add-task" method="POST" action="/tasks">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <label for="end-date">End Date</label>
+        <input type="date" id="end-date" name="end-date">
+        <label for="hashtags">Hashtag</label>
+        <input type="text" id="hashtags" name="hashtags">
+        <input type="submit" value="Add Task">
+    </form>
+</div>

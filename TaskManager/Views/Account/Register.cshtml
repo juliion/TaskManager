@@ -1,0 +1,41 @@
+﻿@model TaskManager.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Sign up";
+    Layout = "_LayoutBase";
+}
+<div class="container">
+    <div class="form-container">
+        <h1>Sign up</h1>
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Name">Name:</label>
+                <input asp-for="Name" type="text" required>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname">Surname:</label>
+                <input asp-for="Surname" type="text" required>
+                <span asp-validation-for="Surname"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email:</label>
+                <input asp-for="Email" type="email" required>
+                <span asp-validation-for="Email"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Password:</label>
+                <input asp-for="Password" type="password" required>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordConfirm">Confirm Password:</label>
+                <input asp-for="PasswordConfirm" type="password" required>
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a asp-controller="Account" asp-action="Login">Login</a></p>
+    </div>
+</div>

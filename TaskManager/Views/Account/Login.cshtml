@@ -1,0 +1,31 @@
+﻿@model TaskManager.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "_LayoutBase";
+}
+<div class="container">
+    <div class="form-container">
+        <h1>Log in</h1>
+    <form method="post" asp-controller="Account" asp-action="Login"
+          asp-route-returnUrl="@Model.ReturnUrl">
+        <div asp-validation-summary="ModelOnly"></div>
+         <div class="form-group">
+             <label asp-for="Email">Email:</label>
+             <input asp-for="Email" type="email" required>
+             <span asp-validation-for="Email"></span>
+
+         </div>
+         <div class="form-group">
+             <label asp-for="Password">Password:</label>
+             <input asp-for="Password" type="password" required>
+             <span asp-validation-for="Password"></span>
+         </div>
+        <div class="remember-me">
+                <input asp-for="RememberMe" type="checkbox">
+                <label asp-for="RememberMe">Remember me</label>
+        </div>
+        <button type="submit">Login</button>
+            <p>Don't have an account? <a asp-controller="Account" asp-action="Register">Register</a></p>
+    </form>
+    </div>
+</div>

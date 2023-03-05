@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TaskManager.Models.Task>
+@{
+    ViewData["Title"] = "Tasks";
+    Layout = "_Layout";
+}
+<main>
+    <div class="container-tasks">
+        <h2>Tasks</h2>
+        <div class="actions-top">
+            <form>
+                <input type="text" placeholder="Search tasks..." />
+                <button id="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <a asp-controller="Tasks" asp-action="AddTask" class="add-task-btn">Add Task</a>
+        </div>
+        <ul class="tasks">
+            @if(Model.Count() == 0)
+            {
+                <li>
+                    <h3>You don't have a tasks 🤔</h3>
+                </li>
+                
+            } else
+            {
+                @foreach(var task in Model)
+                {
+                    if(task.IsCompleted)
+                    {
+                        <li class="completed">
+                            <h3>@task.Title</h3>
+                            <p>@task.Description</p>
+                            <div class="details">
+                                <span>Priority: @task.Priority</span>
+                                <span>End Date: @task.EndDate</span>
+                                <span>Hashtag: @task.Hashtag</span>
+                            </div>
+                            <div class="actions">
+                                <a href="#">Mark as not completed</a>
+                                <a href="#">Delete</a>
+                            </div>
+                        </li>
+                    } else
+                    {
+                        <li>
+                            <h3>@task.Title</h3>
+                            <p>@task.Description</p>
+                            <div class="details">
+                                <span>Priority: @task.Priority</span>
+                                <span>End Date: @task.EndDate</span>
+                                <span>Hashtag: @task.Hashtag</span>
+                            </div>
+                            <div class="actions">
+                                <a href="#">Mark as completed</a>
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                            </div>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</main>
