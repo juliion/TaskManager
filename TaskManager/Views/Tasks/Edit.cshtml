@@ -1,12 +1,15 @@
-﻿@model TaskManager.ViewModels.TaskViewModel
+﻿@model TaskManager.Models.Task
 @{
-    ViewData["Title"] = "Add task";
+    ViewData["Title"] = "Edit task";
     Layout = "_Layout";
 }
 
 <div class="add-task-container">
-    <h1 class="mb-5">Add Task</h1>
-    <form class="add-task" method="POST" asp-controller="Tasks" asp-action="AddTask">
+    <h1 class="mb-5">Edit Task</h1>
+    <form class="add-task" method="POST" asp-controller="Tasks" asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="UserId"/>
+        <input type="hidden" asp-for="IsCompleted"/>
         <label asp-for="Title">Title</label>
         <input asp-for="Title" type="text" required>
         <span asp-validation-for="Title" class="text-danger"></span>
@@ -31,6 +34,6 @@
         <input asp-for="Hashtag" type="text">
         <span asp-validation-for="Hashtag" class="text-danger"></span>
 
-        <input type="submit" value="Add Task">
+        <input type="submit" value="Edit Task">
     </form>
 </div>

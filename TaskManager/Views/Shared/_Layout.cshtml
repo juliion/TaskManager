@@ -6,7 +6,9 @@
     <title>@ViewData["Title"] - TaskManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/img/logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="menu">
@@ -17,8 +19,8 @@
         <ul>
             <li><a asp-controller="Dashboard" asp-action="Index"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
             <li><a asp-controller="Tasks" asp-action="Index"><i class="fas fa-tasks"></i>Tasks</a></li>
-            <li><a href="#"><i class="far fa-calendar-alt"></i>Calendar</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+            <li><a asp-controller="Calendar" asp-action="Index"><i class="far fa-calendar-alt"></i>Calendar</a></li>
+            <li><a asp-controller="Settings" asp-action="Index"><i class="fas fa-cog"></i>Settings</a></li>
             <li><a asp-action="Index" asp-controller="Home"><i class="fa-solid fa-arrow-right-from-bracket"></i>Back to home</a></li>
         </ul>
     </div>

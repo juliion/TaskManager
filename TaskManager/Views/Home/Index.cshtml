@@ -7,6 +7,10 @@
         <div class="hero-text">
             <h1>Welcome to <br> Task Manager</h1>
             <p>Organize your life with our simple and intuitive task management site. Try it now!</p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-action="Index" asp-controller="Tasks">Go to tasks 🏃</a>
+            }
         </div>
         <div class="hero-image">
             <img src="~/img/hero-image.png" alt="Task Manager Hero Image">

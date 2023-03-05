@@ -1,4 +1,6 @@
-﻿@model IEnumerable<TaskManager.Models.Task>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model IEnumerable<TaskManager.Models.Task>
 @{
     ViewData["Title"] = "Tasks";
     Layout = "_Layout";
@@ -7,8 +9,8 @@
     <div class="container-tasks">
         <h2>Tasks</h2>
         <div class="actions-top">
-            <form>
-                <input type="text" placeholder="Search tasks..." />
+            <form method="post" asp-controller="Tasks" asp-action="Search">
+                <input type="text" name="search" value="@HttpContextAccessor.HttpContext.Request.Query["search"].ToString()" placeholder="Search tasks..." />
                 <button id="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <a asp-controller="Tasks" asp-action="AddTask" class="add-task-btn">Add Task</a>
@@ -35,8 +37,8 @@
                                 <span>Hashtag: @task.Hashtag</span>
                             </div>
                             <div class="actions">
-                                <a href="#">Mark as not completed</a>
-                                <a href="#">Delete</a>
+                                <a class="mark-as-not-comp" data-taskid="@task.Id">Mark as not completed</a>
+                                <a class="delete-btn"  style="color:#fff;" data-taskid="@task.Id">Delete</a>
                             </div>
                         </li>
                     } else
@@ -50,9 +52,9 @@
                                 <span>Hashtag: @task.Hashtag</span>
                             </div>
                             <div class="actions">
-                                <a href="#">Mark as completed</a>
-                                <a href="#">Edit</a>
-                                <a href="#">Delete</a>
+                                <a class="mark-as-comp" data-taskid="@task.Id">Mark as completed</a>
+                                <a asp-action="Edit" asp-route-id="@task.Id">Edit</a>
+                                <a class="delete-btn" style="color:#fff;" data-taskid="@task.Id">Delete</a>
                             </div>
                         </li>
                     }

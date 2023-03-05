@@ -12,17 +12,12 @@ namespace TaskManager.ViewModels
         public string Title { get; set; }
         [MaxLength(500)]
         public string Description { get; set; }
-        [Required]
         public bool IsCompleted { get; set; }
         [Required]
         public TaskPriority Priority { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
-        [Required]
-        [ForeignKey("Hashtag")]
-        public int HashtagId { get; set; }
-        [Required]
-        [ForeignKey("User")]
-        public string UserId { get; set; }
+        [MaxLength(100)]
+        public string Hashtag { get; set; }
     }
 }
